@@ -13,10 +13,30 @@ const rl = readline.createInterface({
 
 // the function that will be called by the unit test below
 const rockPaperScissors = (hand1, hand2) => {
+  // converts to lower csas
+  hand1 = hand1.toLowerCase();
+  hand2 = hand2.toLowerCase();
 
-  // Write code here
-  // Use the unit test to see what is expected
+  // hand one wins
+  if (
+    (hand1 === "rock" && hand2 === "sissors") ||
+    (hand1 === "paper" && hand2 === "rock") ||
+    (hand1 === "sissors" && hand2 === "paper")
+  ) {
+    return "Hand one wins!";
 
+  // hand two wins
+  } else if ( 
+    (hand1 === "sissors" && hand2 === "rock") ||
+    (hand1 === "rock" && hand2 === "paper") ||
+    (hand1 === "paper" && hand2 === "sissors")
+  ) {
+    return "Hand two wins!";
+
+    // it is a tie
+  } else if (hand1 === hand2) {
+    return "It is a tie!";
+  }
 }
 
 // the first function called in the program to get an input from the user
