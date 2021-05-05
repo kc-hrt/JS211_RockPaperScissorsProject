@@ -14,28 +14,66 @@ const rl = readline.createInterface({
 // the function that will be called by the unit test below
 const rockPaperScissors = (hand1, hand2) => {
   // converts to lower csas
-  hand1 = hand1.toLowerCase();
-  hand2 = hand2.toLowerCase();
+  hand1 = hand1.toLowerCase().trim();
+  hand2 = hand2.toLowerCase().trim();
 
   // hand one wins
   if (
-    (hand1 === "rock" && hand2 === "sissors") ||
+    // Scissors cuts paper.
+    (hand1 === "sissors" && hand2 === "paper") ||
+    // Paper covers rock.
     (hand1 === "paper" && hand2 === "rock") ||
-    (hand1 === "sissors" && hand2 === "paper")
+    // Rock crushes lizard.
+    (hand1 === "rock" && hand2 === "lizard") ||
+    // Lizard poisons Spock.
+    (hand1 === "lizard" && hand2 === "spock") ||
+    // Spock smashes scissors.
+    (hand1 === "spock" && hand2 === "sissors") ||
+    // Scissors decapitates lizard.
+    (hand1 === "sissors" && hand2 === "lizard") ||
+    // Lizard eats paper.
+    (hand1 === "lizard" && hand2 === "paper") ||
+    // Paper disproves Spock.
+    (hand1 === "paper" && hand2 === "spock") ||
+    // Spock vaporizes rock.
+    (hand1 === "spock" && hand2 === "rock") ||
+    // Rock crushes scissors.
+    (hand1 === "rock" && hand2 === "sissors")
   ) {
     return "Hand one wins!";
 
   // hand two wins
   } else if ( 
-    (hand1 === "sissors" && hand2 === "rock") ||
-    (hand1 === "rock" && hand2 === "paper") ||
-    (hand1 === "paper" && hand2 === "sissors")
+    // Scissors cuts paper.
+    (hand2 === "sissors" && hand1 === "paper") ||
+    // Paper covers rock.
+    (hand2 === "paper" && hand1 === "rock") ||
+    // Rock crushes lizard.
+    (hand2 === "rock" && hand1 === "lizard") ||
+    // Lizard poisons Spock.
+    (hand2 === "lizard" && hand1 === "spock") ||
+    // Spock smashes scissors.
+    (hand2 === "spock" && hand1 === "sissors") ||
+    // Scissors decapitates lizard.
+    (hand2 === "sissors" && hand1 === "lizard") ||
+    // Lizard eats paper.
+    (hand2 === "lizard" && hand1 === "paper") ||
+    // Paper disproves Spock.
+    (hand2 === "paper" && hand1 === "spock") ||
+    // Spock vaporizes rock.
+    (hand2 === "spock" && hand1 === "rock") ||
+    // Rock crushes scissors.
+    (hand2 === "rock" && hand1 === "sissors")
   ) {
     return "Hand two wins!";
 
     // it is a tie
   } else if (hand1 === hand2) {
     return "It is a tie!";
+
+    // undefined message
+  } else {
+    return "---  Ooops something went wrong. Please check the spelling in the next round.  ---"
   }
 }
 
@@ -43,6 +81,7 @@ const rockPaperScissors = (hand1, hand2) => {
 // to run the function use the command: node main.js
 // to close it ctrl + C
 function getPrompt() {
+   console.log("rock, paper, sissors, lizard, spock") // ;)
   rl.question('hand1: ', (answer1) => {
     rl.question('hand2: ', (answer2) => {
       console.log( rockPaperScissors(answer1, answer2) );
