@@ -20,7 +20,7 @@ const rockPaperScissors = (hand1, hand2) => {
   // hand one wins
   if (
     // Scissors cuts paper.
-    (hand1 === "sissors" && hand2 === "paper") ||
+    (hand1 === "scissors" && hand2 === "paper") ||
     // Paper covers rock.
     (hand1 === "paper" && hand2 === "rock") ||
     // Rock crushes lizard.
@@ -28,9 +28,9 @@ const rockPaperScissors = (hand1, hand2) => {
     // Lizard poisons Spock.
     (hand1 === "lizard" && hand2 === "spock") ||
     // Spock smashes scissors.
-    (hand1 === "spock" && hand2 === "sissors") ||
+    (hand1 === "spock" && hand2 === "scissors") ||
     // Scissors decapitates lizard.
-    (hand1 === "sissors" && hand2 === "lizard") ||
+    (hand1 === "scissors" && hand2 === "lizard") ||
     // Lizard eats paper.
     (hand1 === "lizard" && hand2 === "paper") ||
     // Paper disproves Spock.
@@ -38,14 +38,14 @@ const rockPaperScissors = (hand1, hand2) => {
     // Spock vaporizes rock.
     (hand1 === "spock" && hand2 === "rock") ||
     // Rock crushes scissors.
-    (hand1 === "rock" && hand2 === "sissors")
+    (hand1 === "rock" && hand2 === "scissors")
   ) {
     return "Hand one wins!";
 
   // hand two wins
   } else if ( 
     // Scissors cuts paper.
-    (hand2 === "sissors" && hand1 === "paper") ||
+    (hand2 === "scissors" && hand1 === "paper") ||
     // Paper covers rock.
     (hand2 === "paper" && hand1 === "rock") ||
     // Rock crushes lizard.
@@ -53,9 +53,9 @@ const rockPaperScissors = (hand1, hand2) => {
     // Lizard poisons Spock.
     (hand2 === "lizard" && hand1 === "spock") ||
     // Spock smashes scissors.
-    (hand2 === "spock" && hand1 === "sissors") ||
+    (hand2 === "spock" && hand1 === "scissors") ||
     // Scissors decapitates lizard.
-    (hand2 === "sissors" && hand1 === "lizard") ||
+    (hand2 === "scissors" && hand1 === "lizard") ||
     // Lizard eats paper.
     (hand2 === "lizard" && hand1 === "paper") ||
     // Paper disproves Spock.
@@ -63,13 +63,13 @@ const rockPaperScissors = (hand1, hand2) => {
     // Spock vaporizes rock.
     (hand2 === "spock" && hand1 === "rock") ||
     // Rock crushes scissors.
-    (hand2 === "rock" && hand1 === "sissors")
+    (hand2 === "rock" && hand1 === "scissors")
   ) {
     return "Hand two wins!";
 
     // it is a tie
   } else if (hand1 === hand2) {
-    return "It is a tie!";
+    return "It's a tie!";
 
     // undefined message
   } else {
@@ -81,7 +81,7 @@ const rockPaperScissors = (hand1, hand2) => {
 // to run the function use the command: node main.js
 // to close it ctrl + C
 function getPrompt() {
-   console.log("rock, paper, sissors, lizard, spock") // ;)
+   console.log("rock, paper, scissors, lizard, spock") // ;)
   rl.question('hand1: ', (answer1) => {
     rl.question('hand2: ', (answer2) => {
       console.log( rockPaperScissors(answer1, answer2) );
@@ -101,11 +101,16 @@ if (typeof describe === 'function') {
       assert.equal(rockPaperScissors('rock', 'rock'), "It's a tie!");
       assert.equal(rockPaperScissors('paper', 'paper'), "It's a tie!");
       assert.equal(rockPaperScissors('scissors', 'scissors'), "It's a tie!");
+      assert.equal(rockPaperScissors('lizard', 'lizard'), "It's a tie!");
+      assert.equal(rockPaperScissors('spock', 'spock'), "It's a tie!");
     });
     it('should detect which hand won', () => {
       assert.equal(rockPaperScissors('rock', 'paper'), "Hand two wins!");
       assert.equal(rockPaperScissors('paper', 'scissors'), "Hand two wins!");
       assert.equal(rockPaperScissors('rock', 'scissors'), "Hand one wins!");
+      assert.equal(rockPaperScissors('rock', 'spock'), "Hand two wins!");
+      assert.equal(rockPaperScissors('spock', 'lizard'), "Hand two wins!");
+      assert.equal(rockPaperScissors('lizard', 'paper'), "Hand one wins!");
     });
     it('should scrub input to ensure lowercase with "trim"ed whitepace', () => {
       assert.equal(rockPaperScissors('rOcK', ' paper '), "Hand two wins!");
